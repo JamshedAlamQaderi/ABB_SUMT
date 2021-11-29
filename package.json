@@ -1,0 +1,24 @@
+{
+  "name": "abb_sumt",
+  "version": "1.0.0",
+  "description": "A Project for Simple User management tool",
+  "main": "app.js",
+  "scripts": {
+    "serve":"nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamshedAlamQaderi/ABB_SUMT.git"
+  },
+  "author": "Jamshed Alam Qaderi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamshedAlamQaderi/ABB_SUMT/issues"
+  },
+  "homepage": "https://github.com/JamshedAlamQaderi/ABB_SUMT#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15"
+  }
+}
