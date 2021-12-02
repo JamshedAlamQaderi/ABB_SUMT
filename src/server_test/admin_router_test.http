@@ -1,0 +1,31 @@
+get http://localhost:8080/api/admin/all
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTYzODQzMTc4MiwiZXhwIjoxNjM4NTE4MTgyfQ.wP-NWuUZUt8s3eN9dU_Uonr_UgONce-xkQQcwO9Qmbo
+
+###
+get http://localhost:8080/api/admin/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTYzODQzMTc4MiwiZXhwIjoxNjM4NTE4MTgyfQ.wP-NWuUZUt8s3eN9dU_Uonr_UgONce-xkQQcwO9Qmbo
+
+###
+post http://localhost:8080/api/admin/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTYzODQzMTc4MiwiZXhwIjoxNjM4NTE4MTgyfQ.wP-NWuUZUt8s3eN9dU_Uonr_UgONce-xkQQcwO9Qmbo
+
+{
+    "username" : "ariful",
+    "password" : "45786525",
+    "role" : "admin"
+}
+
+###
+post http://localhost:8080/api/admin/update_password/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTYzODQzMTc4MiwiZXhwIjoxNjM4NTE4MTgyfQ.wP-NWuUZUt8s3eN9dU_Uonr_UgONce-xkQQcwO9Qmbo
+
+{
+    "old_password" : "123456789",
+    "new_password" : "123456789"
+}
+
+###
+get http://localhost:8080/api/admin/delete/2
