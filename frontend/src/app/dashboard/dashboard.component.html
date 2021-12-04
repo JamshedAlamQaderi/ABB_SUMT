@@ -1,1 +1,69 @@
-<p>dashboard works!</p>
+<app-header></app-header>
+<div class="bg-gray-100 h-screen p-10">
+  <div class="flex justify-center uppercase font-bold text-4xl">Dashboard</div>
+  <div class="flex justify-center mt-32">
+    <a
+      class="
+        w-48
+        h-48
+        bg-white
+        shadow-xl
+        m-4
+        text-center
+        flex
+        items-center
+        justify-center
+        uppercase
+        text-xl
+        bg-gradient-to-r
+        hover:from-green-700 hover:to-green-400 hover:text-white
+        cursor-pointer
+        rounded-md hover:shadow-2xl
+      "
+      [routerLink]="['/user-details']"
+      >User<br />Details</a
+    >
+    <a
+      class="
+        w-48
+        h-48
+        bg-white
+        shadow-xl
+        m-4
+        text-center
+        flex
+        items-center
+        justify-center
+        uppercase
+        text-xl
+        bg-gradient-to-r
+        hover:from-green-700 hover:to-green-400 hover:text-white
+        cursor-pointer
+        rounded-md hover:shadow-2xl
+      "
+      [routerLink]="['/admin-details']"
+      >Admin<br />Details</a
+    >
+    <a
+      class="
+        w-48
+        h-48
+        bg-white
+        shadow-xl
+        m-4
+        text-center
+        flex
+        items-center
+        justify-center
+        uppercase
+        text-xl
+        bg-gradient-to-r
+        hover:from-green-700 hover:to-green-400 hover:text-white
+        cursor-pointer
+        rounded-md hover:shadow-2xl
+      "
+      [routerLink]="['/change-password']"
+      >Change<br />Password</a
+    >
+  </div>
+</div>
