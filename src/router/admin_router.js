@@ -47,7 +47,7 @@ router.post("/update_password/:id", (req, res)=>{
     if(req.params.id != "" && req.params.id == req.userId){
         if(req.body.old_password != "" && req.body.new_password != ""){
             if(req.body.old_password != req.body.new_password){
-                adminRepository.readById(req.params.id, (errMsg)=>{
+                adminRepository.readFullById(req.params.id, (errMsg)=>{
                     res.send({error: errMsg})
                 }, (successData)=>{
                     if(successData.length > 0){

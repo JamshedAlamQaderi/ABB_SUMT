@@ -1,0 +1,56 @@
+<div class="flex h-screen bg-gray-100">
+  <div class="m-auto w-100 bg-white shadow-md rounded-md py-4">
+    <div class="w-full flex justify-center mx-auto py-4">
+      <img
+        class="w-24 h-28"
+        src="assets/amr_bangla_blog_logo.png"
+        alt="Amar Bangla Blog"
+      />
+    </div>
+    <div class="py-2 px-10 w-full">
+      <input
+        class="border-2 w-full rounded-full p-2 border-green-700 px-4"
+        id="username"
+        type="text"
+        [(ngModel)]="username"
+        placeholder="Username"
+        name="username"
+      />
+    </div>
+    <div class="py-2 px-10 w-full">
+      <input
+        class="border-2 w-full rounded-full p-2 border-green-700 px-4"
+        id="password"
+        type="password"
+        [(ngModel)]="password"
+        placeholder="password"
+        name="username"
+      />
+    </div>
+    <div class="px-10 w-full flex justify-between mt-4">
+      <button
+        class="w-3/6 h-8 bg-gray-100 rounded-full hover:bg-gray-300 m-1" 
+        [ngClass]="rememberMe?'bg-green-600 hover:bg-green-500 text-white':''"
+        (click)="toggleRememberMe()"
+      >
+        {{ rememberMeBtnStatus }}
+      </button>
+      <button
+        class="
+          m-1
+          w-2/6
+          h-8
+          rounded-full
+          text-white
+          bg-gradient-to-r
+          from-green-700
+          to-green-400
+          hover:from-green-800 hover:to-green-500
+        "
+        (click)="login()"
+      >
+        Login
+      </button>
+    </div>
+  </div>
+</div>

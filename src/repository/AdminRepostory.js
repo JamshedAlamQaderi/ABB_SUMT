@@ -13,7 +13,7 @@ class AdminRepository{
 
     readAll(onError, onSuccess){
         if(database === 'undefined') return onError("AdminRepository::readAll-> Database not Found!");
-        let query = `select * from admin`;
+        let query = `select id, username, role from admin`;
         database.query(query, (err, res, field)=>{
             if(err) return onError("AdminRepository::readAll-> reading all admin data error, " + err.message)
             onSuccess(res)
@@ -22,16 +22,25 @@ class AdminRepository{
 
     login({username, password}, onError, onSuccess){
         if(database === 'undefined') return onError("AdminRepository::login-> Database not Found!");
-        let query = `select * from admin where username=? and password=?`;
+        let query = `select id, username, role from admin where username=? and password=?`;
         database.query(query, [username, password], (err, res, field)=>{
             if(err) return onError("AdminRepository::login-> login by (username:"+username+", password: "+password+") failed, error: " + err.message)
             onSuccess(res)
         })
     }
 
-    readById(id, onError, onSuccess){
-        if(database === 'undefined') return onError("AdminRepository::readByUsername-> Database not Found!");
+    readFullById(id, onError, onSuccess){
+        if(database === 'undefined') return onError("AdminRepository::readFullById-> Database not Found!");
         let query = `select * from admin where id=?`;
+        database.query(query, [id], (err, res, field)=>{
+            if(err) return onError("AdminRepository::readFullById-> reading by id("+id+") error, " + err.message)
+            onSuccess(res)
+        })
+    }
+
+    readById(id, onError, onSuccess){
+        if(database === 'undefined') return onError("AdminRepository::readById-> Database not Found!");
+        let query = `select id, username, role from admin where id=?`;
         database.query(query, [id], (err, res, field)=>{
             if(err) return onError("AdminRepository::readById-> reading by id("+id+") error, " + err.message)
             onSuccess(res)
