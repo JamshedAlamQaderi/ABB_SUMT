@@ -1,1 +1,58 @@
-<p>admin-details works!</p>
+<app-header></app-header>
+<div class="bg-gray-100 h-screen p-10">
+  <div class="flex justify-center uppercase font-bold text-4xl">
+    Admin Details
+  </div>
+  <div class="float-right flex flex-row flex-wrap gap-4">
+    <a
+      class="
+        rounded-full
+        shadow-xl
+        px-4
+        h-12
+        flex
+        justify-center
+        items-center
+        border-2 border-green-200
+        uppercase
+        font-bold
+        hover:shadow-2xl hover:bg-gray-200
+        cursor-pointer
+        hover:text-gray-600
+      "
+      routerLink="/dashboard"
+    >
+      Go TO Dashboard
+    </a>
+    <a
+      class="
+        rounded-full
+        shadow-xl
+        px-4
+        h-12
+        flex
+        justify-center
+        items-center
+        border-2 border-green-200
+        uppercase
+        font-bold
+        hover:shadow-2xl hover:bg-gray-200
+        cursor-pointer
+        hover:text-gray-600
+      "
+      routerLink="/create-new-admin"
+    >
+      Create New
+    </a>
+  </div>
+  <div class="flex flex-row mt-10 flex-wrap">
+    <app-admin-detail-card
+      class="m-4"
+      *ngFor="let admin of adminDetailList"
+      adminId="{{ admin.adminId }}"
+      adminUsername="{{ admin.adminUsername }}"
+      adminRole="{{ admin.adminRole }}"
+    >
+    </app-admin-detail-card>
+  </div>
+</div>

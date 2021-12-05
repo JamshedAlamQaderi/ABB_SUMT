@@ -1,0 +1,93 @@
+<app-header></app-header>
+<div class="bg-gray-100 h-screen p-10">
+  <div class="flex justify-center uppercase font-bold text-4xl">
+    Create new admin user
+  </div>
+  <div class="w-full flex justify-center mt-10">
+    <div class="bg-white w-100 rounded-md shadow-xl p-10">
+      <!-- important post link -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold" for="username"
+          >Username</label
+        >
+        <input
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-12 p-2"
+          type="text"
+          id="username"
+          placeholder="Username"
+          [(ngModel)]="newAdminModel.username"
+        />
+      </div>
+      <!-- password -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold" for="password"
+          >Password</label
+        >
+        <input
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-12 p-2"
+          type="text"
+          id="password"
+          placeholder="Password"
+          [(ngModel)]="newAdminModel.password"
+        />
+      </div>
+      <!-- confirm password -->
+      <div class="w-full flex flex-col mt-4">
+        <label
+          class="text-gray-600 font-sans text-lg font-bold"
+          for="confirm_password"
+          >Confirm Password</label
+        >
+        <input
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-12 p-2"
+          type="text"
+          id="confirm_password"
+          placeholder="Confirm Password"
+          [(ngModel)]="newAdminModel.confirmPassword"
+        />
+      </div>
+      <!-- User role area -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold" for="userRole"
+          >Select User Role</label
+        >
+        <select
+          [(ngModel)]="newAdminModel.userRole"
+          id="userRole"
+          name="user_role"
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-12 p-2"
+        >
+          <option value="" selected>Select User Role</option>
+          <option value="ADMIN">Admin</option>
+          <option value="MODERATOR">Moderator</option>
+        </select>
+      </div>
+      <!-- button area -->
+      <div class="mt-4 w-full flex justify-end">
+        <button
+          class="w-4/12 h-10 bg-gray-100 rounded-full hover:bg-gray-300 m-1"
+          (click)="onCancelButtonClicked()"
+        >
+          Cancel
+        </button>
+        <button
+          class="
+            m-1
+            w-4/12
+            h-10
+            rounded-full
+            uppercase
+            text-white
+            bg-gradient-to-r
+            from-green-700
+            to-green-400
+            hover:from-green-800 hover:to-green-500
+          "
+          (click)="onCreateButtonClicked()"
+        >
+          Create
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

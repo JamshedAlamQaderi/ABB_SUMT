@@ -1,0 +1,55 @@
+<div
+  class="
+    bg-white
+    w-48
+    h-48
+    rounded-md
+    shadow-lg
+    flex flex-col
+    p-2
+    border-2
+    group
+  "
+>
+  <!-- delete button apear when hover -->
+  <div class="w-full h-12 uppercase">
+    <button
+      class="
+        rounded-full
+        bg-red-600
+        float-right
+        text-white
+        w-20
+        px-2
+        text-center
+        hover:bg-red-900
+        cursor-pointer
+        opacity-0
+        group-hover:opacity-100
+      "
+      (click)="deleteAdmin()"
+    >
+      Delete
+    </button>
+  </div>
+  <div class="flex w-full h-24 justify-center items-center">
+    <div class="uppercase font-bold text-xl">{{ adminUsername }}</div>
+  </div>
+  <div
+    class="
+      text-white
+      rounded-full
+      shadow-xl
+      bg-green-400
+      uppercase
+      w-full
+      h-12
+      flex
+      justify-center
+      items-center
+      font-bold
+    "
+  >
+    {{ adminRole }}
+  </div>
+</div>

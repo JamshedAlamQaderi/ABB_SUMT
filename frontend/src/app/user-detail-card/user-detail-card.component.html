@@ -1,0 +1,102 @@
+<div
+  class="
+    w-100
+    h-28
+    bg-white
+    rounded-md
+    shadow-lg
+    flex flex-row
+    group
+    cursor-pointer
+  "
+>
+  <div class="w-20 h-full flex items-center ml-2">
+    <div class="w-20 h-20 bg-green-400 p-1 rounded-full">
+      <img
+        class="w-full h-full rounded-full"
+        src="{{ userDetailModel.profileLink }}"
+        alt="Image not found!"
+      />
+    </div>
+  </div>
+  <!-- steam id, name, country -->
+  <div class="h-full w-6/12 ml-2 flex justify-center flex-col">
+    <div class="font-mono text-sm">
+      steam id:
+      <a
+        class="text-green-600 hover:text-green-900"
+        href="http://steam.com/@jamshed"
+        >{{ userDetailModel.steamId }}</a
+      >
+    </div>
+    <div class="leading-2 text-xl">{{ userDetailModel.name }}</div>
+    <div class="font-mono text-sm">from: {{ userDetailModel.country }}</div>
+  </div>
+  <!-- level, join date, referrer -->
+  <div class="h-full w-3/12">
+    <!-- edit & delete button -->
+    <div
+      class="
+        flex flex-row
+        justify-end
+        mt-1
+        mr-1
+        opacity-0
+        group-hover:opacity-100
+      "
+    >
+      <div
+        (click)="onEditClicked()"
+        class="
+          font-mono
+          text-sm
+          rounded-full
+          lowercase
+          px-2
+          bg-green-500
+          text-center text-white
+          hover:bg-green-900
+        "
+      >
+        edit
+      </div>
+      <div
+        (click)="onDeleteClicked()"
+        class="
+          rounded-full
+          px-2
+          ml-1
+          bg-red-500
+          lowercase
+          text-center text-white text-sm
+          font-mono
+          hover:bg-red-900
+        "
+      >
+        del
+      </div>
+    </div>
+
+    <!-- level button -->
+    <div
+      class="
+        rounded-full
+        uppercase
+        font-mono
+        text-sm
+        bg-green-600
+        text-white text-center
+        shadow-lg
+        mt-1
+      "
+    >
+      {{ userDetailModel.level }}
+    </div>
+    <!-- join date -->
+    <div class="text-xs pr-2 pt-2">Joined:{{ userDetailModel.joinedDate }}</div>
+    <!-- referrer -->
+    <div class="text-xs font-mono mt-1 break-all">
+      Ref: {{ userDetailModel.referrer }}
+    </div>
+  </div>
+</div>

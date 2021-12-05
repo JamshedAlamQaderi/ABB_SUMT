@@ -1,0 +1,258 @@
+<app-header></app-header>
+<div class="bg-gray-100 h-screen p-10">
+  <div class="flex justify-center uppercase font-bold text-4xl">
+    Edit User Details
+  </div>
+  <div class="w-full flex flex-row flex-wrap gap-10 mt-10">
+    <!-- section 1 -->
+    <div class="w-100 bg-white rounded-md shadow-lg p-4">
+      <!-- profile picture area -->
+      <div class="w-full flex justify-center">
+        <div
+          class="
+            w-40
+            h-40
+            bg-green-400
+            rounded-full
+            shadow-lg
+            flex
+            justify-center
+            items-center
+          "
+        >
+          <img
+            class="w-36 h-36 rounded-full"
+            src="https://images.pexels.com/photos/3586798/pexels-photo-3586798.jpeg?crop=entropy&cs=srgb&dl=pexels-mateus-souza-3586798.jpg&fit=crop&fm=jpg&h=959&w=640"
+            alt="not found"
+          />
+        </div>
+      </div>
+      <!-- name area -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold" for="name"
+          >Name</label
+        >
+        <input
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-12 p-2"
+          id="name"
+          type="text"
+          placeholder="name"
+          [(ngModel)]="editUserDetailModel.name"
+        />
+      </div>
+      <!-- address area -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold" for="address"
+          >Address</label
+        >
+        <input
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-12 p-2"
+          type="text"
+          id="address"
+          placeholder="Address"
+          [(ngModel)]="editUserDetailModel.address"
+        />
+      </div>
+      <!-- Country -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold" for="country"
+          >Country</label
+        >
+        <input
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-12 p-2"
+          type="text"
+          id="country"
+          placeholder="Country"
+          [(ngModel)]="editUserDetailModel.country"
+        />
+      </div>
+      <!-- referrer area -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold" for="referrer"
+          >Referrer</label
+        >
+        <input
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-12 p-2"
+          type="text"
+          id="referrer"
+          placeholder="Referrer"
+          [(ngModel)]="editUserDetailModel.referrer"
+        />
+      </div>
+    </div>
+    <!-- section 2 -->
+    <div class="w-100 bg-white rounded-md shadow-lg p-4">
+      <!-- steamit userid area -->
+      <div class="w-full flex flex-col mt-4">
+        <label
+          class="text-gray-600 font-sans text-lg font-bold"
+          for="steamit_userid"
+          >Steamit UserId</label
+        >
+        <input
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-12 p-2"
+          id="steamit_userid"
+          type="text"
+          placeholder="Steamit UserId (ex: @steamit_user)"
+          [(ngModel)]="editUserDetailModel.steamitUserId"
+        />
+      </div>
+
+      <!-- Joining Date -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold" for="join_date"
+          >Join Date</label
+        >
+        <input
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-12 p-2"
+          type="date"
+          id="join_date"
+          placeholder="Join Date (ex: dd/mm/yyyy)"
+          [(ngModel)]="editUserDetailModel.joinDate"
+        />
+      </div>
+      <!-- intorduction post link -->
+      <div class="w-full flex flex-col mt-4">
+        <label
+          class="text-gray-600 font-sans text-lg font-bold"
+          for="intro_post_link"
+          >Introduction Post Link</label
+        >
+        <input
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-12 p-2"
+          type="text"
+          id="intro_post_link"
+          placeholder="Introduction Post Link"
+          [(ngModel)]="editUserDetailModel.introPostLink"
+        />
+      </div>
+      <!-- important post link -->
+      <div class="w-full flex flex-col mt-4">
+        <label
+          class="text-gray-600 font-sans text-lg font-bold"
+          for="impo_post_link"
+          >Important Post Link</label
+        >
+        <input
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-12 p-2"
+          type="text"
+          id="impo_post_link"
+          placeholder="Important Post Link"
+          [(ngModel)]="editUserDetailModel.impoPostLink"
+        />
+      </div>
+      <!-- User Level link -->
+      <div class="w-full flex flex-col mt-4">
+        <label
+          class="text-gray-600 font-sans text-lg font-bold"
+          for="user_level"
+          >Select User Level</label
+        >
+        <select
+          [(ngModel)]="editUserDetailModel.selectedLevel"
+          id="user_level"
+          name="user_level"
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-12 p-2"
+        >
+          <option value="" selected>Select User Level</option>
+          <option *ngFor="let level of userLevels" [value]="level">
+            {{ level }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <!-- section 3 -->
+    <div class="w-100 bg-white rounded-md shadow-lg p-4">
+      <!-- negative comments area -->
+      <div class="w-full flex flex-col mt-4">
+        <label
+          class="text-gray-600 font-sans text-lg font-bold"
+          for="negative_comments"
+          >Spamming/Abuse/Warning Comment</label
+        >
+        <textarea
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-32 p-2"
+          id="negative_comments"
+          type="textarea"
+          placeholder="Spamming/Abuse/Warning Comment"
+          [(ngModel)]="editUserDetailModel.negativeComment"
+        ></textarea>
+      </div>
+      <!-- Admin Special Comment area -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold" for="asc"
+          >Admin Special Comment</label
+        >
+        <textarea
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-32 p-2"
+          type="text"
+          id="asc"
+          placeholder="Admin Special Comment"
+          [(ngModel)]="editUserDetailModel.adminSpecialComment"
+        ></textarea>
+      </div>
+      <!-- Moderator Special Comment -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold" for="msc"
+          >Moderator Special Comment</label
+        >
+        <textarea
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-32 p-2"
+          type="text"
+          id="msc"
+          placeholder="Moderator Special Comment"
+          [(ngModel)]="editUserDetailModel.moderatorSpecialComment"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="
+    absolute
+    bottom-0
+    right-0
+    w-full
+    bg-white
+    h-20
+    flex
+    justify-end
+    items-center
+    shadow-2xl
+  "
+>
+  <button
+  (click) = "onBackButtonClicked()"
+    class="
+      h-12
+      bg-gray-100
+      rounded-md
+      hover:bg-gray-300
+      m-1
+      uppercase
+      px-4
+      mr-4
+    "
+  >
+    Go back
+  </button>
+  <button
+  (click) = "onSaveButtonClicked()"
+    class="
+      m-1
+      px-4
+      h-12
+      w-32
+      mr-10
+      rounded-md
+      uppercase
+      text-white
+      bg-gradient-to-r
+      from-green-700
+      to-green-400
+      hover:from-green-800 hover:to-green-500
+    "
+  >
+    Save
+  </button>
+</div>

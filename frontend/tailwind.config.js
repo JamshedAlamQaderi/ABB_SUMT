@@ -4,12 +4,16 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        '100': '25rem',
-      }
+        100: "25rem",
+      },
+      display: ["group-hover"],
+      minHeight:{
+        '300': '75rem'
+      },
     },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};
