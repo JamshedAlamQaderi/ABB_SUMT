@@ -6,11 +6,16 @@
         src="assets/amr_bangla_blog_logo.png"
         alt="amr_bangla_blog_logo"
       />
-      <div class="pl-4 font-bold uppercase text-2xl my-auto">Amar Bangla Blog</div>
+      <div class="pl-4 font-bold uppercase text-2xl my-auto">
+        Amar Bangla Blog
+      </div>
     </a>
-    <div class="items-end h-full ml-auto flex">
-        <!-- menu area -->
-        <div class="font-bold text-xl my-auto">{{userRole}}</div>
+    <div class="items-end h-full ml-auto flex gap-2">
+      <!-- menu area -->
+      <div class="font-bold text-xl my-auto uppercase">{{ userRole }}</div>
+      <div class="text-xl my-auto uppercase cursor-pointer" (click)="logout()">
+        Logout
+      </div>
     </div>
   </div>
 </div>

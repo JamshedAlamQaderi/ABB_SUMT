@@ -15,6 +15,11 @@ import { AdminDetailCardComponent } from './admin-detail-card/admin-detail-card.
 import { UserDetailCardComponent } from './user-detail-card/user-detail-card.component';
 import { EditUserDetailsComponent } from './edit-user-details/edit-user-details.component';
 import { CreateAdminComponent } from './create-admin/create-admin.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { AuthGuard } from './auth.guard';
+import { TokenInterceptorService } from './token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -30,8 +35,22 @@ import { CreateAdminComponent } from './create-admin/create-admin.component';
     EditUserDetailsComponent,
     CreateAdminComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, MatSelectModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    SimpleNotificationsModule.forRoot(),
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule,
+  ],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

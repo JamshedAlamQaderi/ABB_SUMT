@@ -14,7 +14,7 @@ router.post("/login", (req, res) => {
           let userId = successData[0].id;
           const token = authRepository.generateAccessToken(
             userId,
-            req.body.rememberMe
+            req.body.rememberMe ? true : false
           );
           res.send({ JWT_TOKEN: token });
         } else {

@@ -3,22 +3,31 @@ const adminRepository = require('../repository/AdminRepostory')
 
 // todo: make all endpoints authorize access to admin or moderator
 
+router.get('/myself', (req, res)=>{
+    if(!req.authenticated) return res.send({error: 'You are not authenticated of userId=' + req.userId})
+    adminRepository.readById(req.userId, (errMsg)=>{
+        res.send({error: errMsg})
+    }, (successData)=>{
+        res.send({success: successData})
+    })
+})
+
 router.get("/all", (req, res)=>{
     if(!req.authenticated) return res.send({error: 'You are not authenticated of userId=' + req.userId})
     adminRepository.readAll((msg)=>{
-        res.send({error: msg, success:[]})
+        res.send({error: msg})
     },(successData)=>{
-        res.send({error: '', success : successData})
+        res.send({ success : successData})
     })
 })
 
 router.get("/:id", (req, res)=>{
     if(!req.authenticated) return res.send({error: 'You are not authenticated of userId=' + req.userId})
-    if(req.params.username != ""){
+    if(req.params.id != ""){
         adminRepository.readById(req.params.id, (errMsg)=>{
-            res.send({error: errMsg, success: ''})
+            res.send({error: errMsg,})
         }, (successData)=>{
-            res.send({error: '', success: successData})
+            res.send({success: successData})
         })
     }else{
         res.send({error: "username not given", success: ''})
@@ -30,9 +39,9 @@ router.post("/create", (req, res)=>{
     if(Object.keys(req.body).length > 0){
         if(req.body.username != "" && req.body.password != "" && req.body.role != ""){
             adminRepository.insert({username: req.body.username, password: req.body.password, role:req.body.role}, (errMsg)=>{
-                res.send({error: errMsg, success: ''})
+                res.send({error: errMsg})
             }, (successData)=>{
-                res.send({error: '', success: successData})
+                res.send({success: successData})
             })
         }else{
             res.send({error: 'username, password & role are invalid', success: ''})

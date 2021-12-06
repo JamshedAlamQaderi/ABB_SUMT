@@ -10,6 +10,7 @@ const connection = mysql.createConnection({
 
 connection.connect((err)=>{
     if(err) return console.error('DB Error: ' + err.message)
+    console.log('Successfully connected to db')
     let adminTableQuery = `create table if not exists admin(
                         id integer primary key auto_increment,
                         username varchar(50) not null,

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AdminService } from '../admin.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   userRole: String = '';
-  constructor() {}
+  constructor(
+    private auth: AuthService,
+    private admin: AdminService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     //api call for check is admin or moderator
-    this.userRole = 'ADMIN'
+    let adminDetail = this.admin.myDetails;
+    this.userRole = adminDetail.adminRole;
+  }
+
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['/login']);
   }
 }
