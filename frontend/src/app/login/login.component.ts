@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 import { environment } from 'src/environments/environment';
-import { AdminService } from '../admin.service';
-import { AuthService } from '../auth.service';
+import { AdminService } from '../services/admin.service';
+import { AuthService } from '../services/auth.service';
 import { LoginModel } from '../classes/login-model';
 
 @Component({
@@ -26,9 +26,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.toggleRememberMeStatus();
-    console.log('login')
     if (this.auth.isLoggedIn()) {
-      console.log('admin already logged in')
       this.getAdminDetails();
     }
   }

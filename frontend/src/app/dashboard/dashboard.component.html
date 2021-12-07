@@ -18,7 +18,8 @@
         bg-gradient-to-r
         hover:from-green-700 hover:to-green-400 hover:text-white
         cursor-pointer
-        rounded-md hover:shadow-2xl
+        rounded-md
+        hover:shadow-2xl
       "
       [routerLink]="['/user-details']"
       >User<br />Details</a
@@ -39,7 +40,8 @@
         bg-gradient-to-r
         hover:from-green-700 hover:to-green-400 hover:text-white
         cursor-pointer
-        rounded-md hover:shadow-2xl
+        rounded-md
+        hover:shadow-2xl
       "
       [routerLink]="['/admin-details']"
       >Admin<br />Details</a
@@ -60,8 +62,10 @@
         bg-gradient-to-r
         hover:from-green-700 hover:to-green-400 hover:text-white
         cursor-pointer
-        rounded-md hover:shadow-2xl
+        rounded-md
+        hover:shadow-2xl
       "
+      *ngIf="currentAdminRole !== 'administrator'"
       [routerLink]="['/change-password']"
       >Change<br />Password</a
     >

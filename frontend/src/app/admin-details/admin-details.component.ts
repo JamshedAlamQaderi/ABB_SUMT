@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NotificationsService } from 'angular2-notifications';
+import { environment } from 'src/environments/environment';
+import { AdminService } from '../services/admin.service';
 import { AdminDetailModel } from '../classes/admin-detail-model';
 
 @Component({
@@ -8,11 +11,38 @@ import { AdminDetailModel } from '../classes/admin-detail-model';
 })
 export class AdminDetailsComponent implements OnInit {
   adminDetailList: AdminDetailModel[] = [];
-  constructor() {}
+  constructor(
+    private admin: AdminService,
+    private notification: NotificationsService
+  ) {}
 
   ngOnInit(): void {
-      for(let i =0; i<10; i++){
-        this.adminDetailList.push({adminId:`${i}`, adminUsername:'Jamshed Alam', adminRole:'Admin'})
+    this.showAllAdminData();
+  }
+
+  showAllAdminData() {
+    this.admin.getAllAdminDetails().subscribe((res) => {
+      if (res.error) {
+        this.notification.error(
+          'Server Error',
+          res.error,
+          environment.noticationConfig
+        );
+      } else if (res.success) {
+        res.success.map((value: any) => {
+          this.adminDetailList.push({
+            adminId: value.id,
+            adminUsername: value.username,
+            adminRole: value.role,
+          });
+        });
+      } else {
+        this.notification.error(
+          'Unknow Error',
+          'Unknow error found! please contact with technician',
+          environment.noticationConfig
+        );
       }
+    });
   }
 }

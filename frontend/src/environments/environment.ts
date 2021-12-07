@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   apiUrl: 'http://127.0.0.1:8080/api',
   noticationConfig: {
-    timeOut: 2000,
+    timeOut: 3000,
     showProgressBar: true,
     position: ['bottom', 'right'],
     animate: 'fade',

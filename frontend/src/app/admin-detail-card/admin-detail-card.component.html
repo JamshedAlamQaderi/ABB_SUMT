@@ -27,7 +27,8 @@
         opacity-0
         group-hover:opacity-100
       "
-      (click)="deleteAdmin()"
+      (click)="deleteAdmin()" 
+      *ngIf = "currentAdminRole === 'administrator' && adminRole !== 'administrator'"
     >
       Delete
     </button>

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoginModel } from './classes/login-model';
+import { LoginModel } from '../classes/login-model';
 import { environment } from 'src/environments/environment';
-import { AdminDetailModel } from './classes/admin-detail-model';
 
 @Injectable({
   providedIn: 'root',

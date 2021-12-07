@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NotificationsService } from 'angular2-notifications';
+import { environment } from 'src/environments/environment';
 import { IEditUserDetailModel } from '../classes/edit-user-detail-model';
 
 @Component({
@@ -9,19 +11,37 @@ import { IEditUserDetailModel } from '../classes/edit-user-detail-model';
 })
 export class EditUserDetailsComponent implements OnInit {
   editUserDetailModel: IEditUserDetailModel = {} as IEditUserDetailModel;
-  userLevels: String[] = [];
+  userLevels: String[] = ['Level-0'];
 
-  constructor(private route: Router) {}
+  constructor(
+    private router: Router,
+    private notification: NotificationsService
+  ) {}
 
   ngOnInit(): void {
     this.editUserDetailModel.selectedLevel = '';
   }
 
   onBackButtonClicked() {
-    this.route.navigate(['/user-details']);
+    this.router.navigate(['/user-details']);
   }
 
   onSaveButtonClicked() {
-    console.log('join date: ', this.editUserDetailModel.joinDate)
+    this.showWarning(
+      this.editUserDetailModel.joinDate,
+      'Empty Field',
+      'Join Date must be filled'
+    );
+    this.showWarning(
+      this.editUserDetailModel.selectedLevel,
+      'Empty Field',
+      'User Level must be selected'
+    );
+  }
+
+  showWarning(value: String, title: string, msg: string) {
+    if (!value || value === '') {
+      this.notification.warn(title, msg, environment.noticationConfig);
+    }
   }
 }

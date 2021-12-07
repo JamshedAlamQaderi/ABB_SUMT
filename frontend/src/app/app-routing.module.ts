@@ -10,18 +10,37 @@ import { LoginComponent } from './login/login.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' }, // if logged in than go to dashboard either go to login
   { path: 'login', component: LoginComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'change-password', component: ChangePasswordComponent },
-  { path: 'admin-details', component: AdminDetailsComponent },
-  { path: 'create-new-admin', component: CreateAdminComponent },
-  { path: 'user-details', component: UserDetailsComponent },
-  { path: 'edit-user-details', component: EditUserDetailsComponent },
+  {
+    path: 'change-password',
+    component: ChangePasswordComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'admin-details',
+    component: AdminDetailsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'create-new-admin',
+    component: CreateAdminComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'user-details',
+    component: UserDetailsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'edit-user-details',
+    component: EditUserDetailsComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
