@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IUserDetailCardModel } from '../classes/user-detail-card-model';
 
 @Component({
@@ -10,7 +11,7 @@ export class UserDetailsComponent implements OnInit {
   searchOptions = ['Name', 'Join Date'];
   selectedSearchOption: String = '';
   userDetailCardModels: IUserDetailCardModel[] = [];
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     let data: IUserDetailCardModel = {
@@ -27,5 +28,9 @@ export class UserDetailsComponent implements OnInit {
     for (let i = 0; i < 10; i++) {
       this.userDetailCardModels.push(data);
     }
+  }
+
+  onCreateUserClick() {
+    this.router.navigate(['/edit-user-details', { mode: 'new' }]);
   }
 }

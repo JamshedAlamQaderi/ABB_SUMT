@@ -20,10 +20,19 @@
             items-center
           "
         >
+          <input
+            type="file"
+            name="user_profile_img"
+            accept="image/*"
+            style="display: none"
+            #profile_img_input
+            (change) = "onImageSelected($event)"
+          />
           <img
-            class="w-36 h-36 rounded-full"
-            src="https://images.pexels.com/photos/3586798/pexels-photo-3586798.jpeg?crop=entropy&cs=srgb&dl=pexels-mateus-souza-3586798.jpg&fit=crop&fm=jpg&h=959&w=640"
+            class="w-36 h-36 rounded-full hover:shadow-2xl"
+            [src]="profileImage"
             alt="not found"
+            (click)="profile_img_input.click()"
           />
         </div>
       </div>
@@ -222,7 +231,7 @@
   "
 >
   <button
-  (click) = "onBackButtonClicked()"
+    (click)="onBackButtonClicked()"
     class="
       h-12
       bg-gray-100
@@ -237,7 +246,7 @@
     Go back
   </button>
   <button
-  (click) = "onSaveButtonClicked()"
+    (click)="onSaveButtonClicked()"
     class="
       m-1
       px-4

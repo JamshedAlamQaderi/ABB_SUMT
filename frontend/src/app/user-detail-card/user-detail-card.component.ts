@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IUserDetailCardModel } from '../classes/user-detail-card-model';
 
 @Component({
@@ -8,12 +9,15 @@ import { IUserDetailCardModel } from '../classes/user-detail-card-model';
 })
 export class UserDetailCardComponent implements OnInit {
   @Input() userDetailModel: IUserDetailCardModel = {} as IUserDetailCardModel;
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
   onEditClicked() {
-    console.log('Edit button clicked: ', this.userDetailModel.userId);
+    this.router.navigate([
+      '/edit-user-details',
+      { mode: 'edit', userId: this.userDetailModel.userId },
+    ]);
   }
 
   onDeleteClicked() {

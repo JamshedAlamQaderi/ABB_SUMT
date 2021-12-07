@@ -1,14 +1,14 @@
 export interface IEditUserDetailModel {
-  name: String;
-  address: String;
-  country: String;
-  steamitUserId: String;
-  referrer: String;
-  joinDate: String;
-  introPostLink: String;
-  impoPostLink: String;
-  negativeComment: String;
-  adminSpecialComment: String;
-  moderatorSpecialComment: String;
-  selectedLevel: String;
+  name: string;
+  address: string;
+  country: string;
+  steamitUserId: string;
+  referrer: string;
+  joinDate: string;
+  introPostLink: string;
+  impoPostLink: string;
+  negativeComment: string;
+  adminSpecialComment: string;
+  moderatorSpecialComment: string;
+  selectedLevel: string;
 }

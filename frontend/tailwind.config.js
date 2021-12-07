@@ -7,8 +7,8 @@ module.exports = {
         100: "25rem",
       },
       display: ["group-hover"],
-      minHeight:{
-        '300': '75rem'
+      minHeight: {
+        300: "75rem",
       },
     },
   },
