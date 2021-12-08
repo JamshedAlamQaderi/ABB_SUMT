@@ -26,7 +26,7 @@
             accept="image/*"
             style="display: none"
             #profile_img_input
-            (change) = "onImageSelected($event)"
+            (change)="onImageSelected($event)"
           />
           <img
             class="w-36 h-36 rounded-full hover:shadow-2xl"
@@ -262,6 +262,6 @@
       hover:from-green-800 hover:to-green-500
     "
   >
-    Save
+    {{ mode == "edit" ? "Update" : "Save" }}
   </button>
 </div>

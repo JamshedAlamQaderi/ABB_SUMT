@@ -1,4 +1,5 @@
 export interface IEditUserDetailModel {
+  userId: string;
   name: string;
   address: string;
   country: string;

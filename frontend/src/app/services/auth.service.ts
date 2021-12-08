@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    if (this.getToken() == '') {
+    if (this.getToken() && this.getToken() == '') {
       return false;
     }
     return true;

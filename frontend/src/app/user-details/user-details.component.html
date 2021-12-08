@@ -4,9 +4,145 @@
     User details
   </div>
   <!-- filter area -->
-  <div class="w-full flex flex-wrap flex-row h-16 mt-6 p-2 justify-end gap-4">
+  <div
+    class="w-full flex flex-wrap justify-center flex-row h-16 mt-6 p-2 gap-4"
+  >
     <!-- go back to dashboard & create new  -->
-    <div class="float-right flex flex-row flex-wrap gap-4">
+    <div class="h-full flex text-center items-center">
+      Total Users ({{ userCount.totalUsers }}) &amp; Page
+      {{ userCount.currentPage }} of {{ userCount.totalPage }}
+    </div>
+    <div class="h-full flex">
+      <a
+        class="
+          h-full
+          flex
+          justify-center
+          items-center
+          text-xl
+          font-bold
+          bg-white
+          cursor-pointer
+          hover:bg-gray-300
+          rounded-sm
+          shadow-lg
+          w-12
+          ml-4
+        "
+        >&lt;</a
+      >
+      <a
+        class="
+          h-full
+          flex
+          justify-center
+          items-center
+          text-xl
+          font-bold
+          bg-white
+          cursor-pointer
+          hover:bg-gray-300
+          rounded-sm
+          shadow-lg
+          w-12
+          ml-4
+        "
+        >1</a
+      >
+      <a
+        class="
+          h-full
+          flex
+          justify-center
+          items-center
+          text-xl
+          font-bold
+          bg-white
+          cursor-pointer
+          hover:bg-gray-300
+          rounded-sm
+          shadow-lg
+          w-12
+          ml-4
+          text-white
+          bg-green-400
+        "
+        >2</a
+      >
+      <a
+        class="
+          h-full
+          flex
+          justify-center
+          items-center
+          text-xl
+          font-bold
+          bg-white
+          cursor-pointer
+          hover:bg-gray-300
+          rounded-sm
+          shadow-lg
+          w-12
+          ml-4
+        "
+        >3</a
+      >
+      <a
+        class="
+          h-full
+          flex
+          justify-center
+          items-center
+          text-xl
+          font-bold
+          bg-white
+          cursor-pointer
+          hover:bg-gray-300
+          rounded-sm
+          shadow-lg
+          w-12
+          ml-4
+        "
+        >...</a
+      >
+      <a
+        class="
+          h-full
+          flex
+          justify-center
+          items-center
+          text-xl
+          font-bold
+          bg-white
+          cursor-pointer
+          hover:bg-gray-300
+          rounded-sm
+          shadow-lg
+          w-12
+          ml-4
+        "
+        >20</a
+      >
+      <a
+        class="
+          h-full
+          flex
+          justify-center
+          items-center
+          text-xl
+          font-bold
+          bg-white
+          cursor-pointer
+          hover:bg-gray-300
+          rounded-sm
+          shadow-lg
+          w-12
+          ml-4
+        "
+        >&gt;</a
+      >
+    </div>
+    <div class="flex justify-end flex-row flex-wrap gap-4">
       <a
         class="
           rounded-full
@@ -64,11 +200,12 @@
       "
       type="text"
       placeholder="Search"
+      [(ngModel)]="searchOption.searchText"
+      (keyup.enter)="onSearchEnterKeyPressed()"
     />
-
     <select
       matNativeControl
-      [(ngModel)]="selectedSearchOption"
+      [(ngModel)]="searchOption.colName"
       name="search option"
       class="
         bg-white
@@ -83,14 +220,14 @@
         p-2
       "
     >
-      <option value="" selected>Select Option</option>
-      <option *ngFor="let value of searchOptions" [value]="value">
-        {{ value }}
+      <option value="id" selected>Select Option</option>
+      <option *ngFor="let item of searchOptions" [value]="item.value">
+        {{ item.text }}
       </option>
     </select>
   </div>
   <!-- user details list -->
-  <div class="flex flex-row flex-wrap gap-4">
+  <div class="flex flex-row flex-wrap gap-4 mt-10">
     <app-user-detail-card
       *ngFor="let userModel of userDetailCardModels"
       [userDetailModel]="userModel"
