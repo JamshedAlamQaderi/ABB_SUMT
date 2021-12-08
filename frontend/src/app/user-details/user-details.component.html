@@ -29,6 +29,8 @@
           w-12
           ml-4
         "
+        *ngIf="pageButtonState.buttonPrePage"
+        (click)="onPrePageButtonClicked()"
         >&lt;</a
       >
       <a
@@ -47,7 +49,10 @@
           w-12
           ml-4
         "
-        >1</a
+        *ngIf="pageButtonState.buttonOne"
+        ngClass="{{ pages[0].isCurrentPage ? 'bg-green-400' : '' }}"
+        (click)="onButtonOneClicked()"
+        >{{ pages[0].pageNo }}</a
       >
       <a
         class="
@@ -65,9 +70,11 @@
           w-12
           ml-4
           text-white
-          bg-green-400
         "
-        >2</a
+        *ngIf="pageButtonState.buttonTwo"
+        ngClass="{{ pages[1].isCurrentPage ? 'bg-green-400' : '' }}"
+        (click)="onButtonTwoClicked()"
+        >{{ pages[1].pageNo }}</a
       >
       <a
         class="
@@ -85,8 +92,12 @@
           w-12
           ml-4
         "
-        >3</a
+        *ngIf="pageButtonState.buttonThree"
+        ngClass="{{ pages[2].isCurrentPage ? 'bg-green-400' : '' }}"
+        (click)="onButtonThreeClicked()"
+        >{{ pages[2].pageNo }}</a
       >
+
       <a
         class="
           h-full
@@ -103,42 +114,8 @@
           w-12
           ml-4
         "
-        >...</a
-      >
-      <a
-        class="
-          h-full
-          flex
-          justify-center
-          items-center
-          text-xl
-          font-bold
-          bg-white
-          cursor-pointer
-          hover:bg-gray-300
-          rounded-sm
-          shadow-lg
-          w-12
-          ml-4
-        "
-        >20</a
-      >
-      <a
-        class="
-          h-full
-          flex
-          justify-center
-          items-center
-          text-xl
-          font-bold
-          bg-white
-          cursor-pointer
-          hover:bg-gray-300
-          rounded-sm
-          shadow-lg
-          w-12
-          ml-4
-        "
+        *ngIf="pageButtonState.buttonNextPage"
+        (click)="onNextPageButtonClicked()"
         >&gt;</a
       >
     </div>

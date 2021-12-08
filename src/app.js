@@ -6,8 +6,9 @@ const apiRouter = require("./router/api");
 const app = express();
 
 app.use(cors({ origin: "http://localhost:4200", optionsSuccessStatus: 200 }));
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use("/api", apiRouter);
 
 app.get("/", (req, res) => {

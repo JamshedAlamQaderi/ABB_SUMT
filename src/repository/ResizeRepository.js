@@ -12,7 +12,7 @@ class Resize {
           this.folder +
           ")"
       );
-      fs.mkdirSync(this.folder);
+      fs.mkdirSync(this.folder, { recursive: true });
     }
   }
   async save(buffer) {
@@ -34,8 +34,8 @@ class Resize {
   }
 
   deleteFile(filename) {
+    let filePath = this.filepath(filename);
     try {
-      let filePath = this.filepath(filename);
       fs.unlinkSync(filePath);
     } catch (err) {
       console.log(
@@ -44,7 +44,7 @@ class Resize {
           ") from path (" +
           filePath +
           ") causing error! Error: ",
-        err
+        err.message
       );
     }
   }
