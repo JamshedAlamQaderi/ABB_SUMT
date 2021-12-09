@@ -12,4 +12,7 @@ export interface IEditUserDetailModel {
   adminSpecialComment: string;
   moderatorSpecialComment: string;
   selectedLevel: string;
+  selectedActiveList: string;
+  selectedSuperActiveList: string;
+  selectedUnderAdminMod: string;
 }

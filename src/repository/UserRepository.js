@@ -15,6 +15,9 @@ class UserRepository {
       admin_special_comment,
       moderator_special_comment,
       user_level,
+      active_list,
+      super_active_list,
+      under_admin_mod,
       profile,
     },
     onError,
@@ -23,7 +26,7 @@ class UserRepository {
     if (database === "undefined")
       return onError("UserRepository::insert -> database not found!");
     let query =
-      "insert into user(name, address, country, steamit_id, referrer, join_date, intro_post_link, important_post_link, negative_comment, admin_special_comment, moderator_special_comment, user_level, profile) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+      "insert into user(name, address, country, steamit_id, referrer, join_date, intro_post_link, important_post_link, negative_comment, admin_special_comment, moderator_special_comment, user_level, active_list, super_active_list, under_admin_mod, profile) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     database.query(
       query,
       [
@@ -39,6 +42,9 @@ class UserRepository {
         admin_special_comment,
         moderator_special_comment,
         user_level,
+        active_list,
+        super_active_list,
+        under_admin_mod,
         profile,
       ],
       (err, res, f) => {
@@ -141,6 +147,9 @@ class UserRepository {
       admin_special_comment,
       moderator_special_comment,
       user_level,
+      active_list,
+      super_active_list,
+      under_admin_mod,
       profile,
     },
     onError,
@@ -173,6 +182,12 @@ class UserRepository {
       database.escape(moderator_special_comment) +
       ", user_level=" +
       database.escape(user_level) +
+      ", active_list=" +
+      database.escape(active_list) +
+      ", super_active_list=" +
+      database.escape(super_active_list) +
+      ", under_admin_mod=" +
+      database.escape(under_admin_mod) +
       ", profile=" +
       database.escape(profile) +
       " where id=" +

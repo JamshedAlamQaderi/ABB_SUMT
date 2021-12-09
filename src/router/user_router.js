@@ -18,6 +18,15 @@ router.post("/create_user", upload.single("image"), async (req, res) => {
   if (!req.body.userLevel || req.body.userLevel === "") {
     return res.send({ error: "Please select user level" });
   }
+  if (!req.body.activeList || req.body.activeList === "") {
+    return res.send({ error: "Please select active list type" });
+  }
+  if (!req.body.superActiveList || req.body.superActiveList === "") {
+    return res.send({ error: "Please select Super Active List Type" });
+  }
+  if (!req.body.underAdminMod || req.body.underAdminMod === "") {
+    return res.send({ error: "Please select User Under Admin/Moderator" });
+  }
   if (!req.body.joinDate || req.body.joinDate === "") {
     return res.send({ error: "Please provide a join date" });
   }
@@ -41,7 +50,7 @@ router.post("/create_user", upload.single("image"), async (req, res) => {
           {
             name: req.body.name,
             address: req.body.address,
-            country: req.body.address,
+            country: req.body.country,
             steamit_id: req.body.steamitId,
             referrer: req.body.referrer,
             join_date: req.body.joinDate,
@@ -51,6 +60,9 @@ router.post("/create_user", upload.single("image"), async (req, res) => {
             admin_special_comment: req.body.adminSpecialComment,
             moderator_special_comment: req.body.modSpecialComment,
             user_level: req.body.userLevel,
+            active_list: req.body.activeList,
+            super_active_list: req.body.superActiveList,
+            under_admin_mod: req.body.underAdminMod,
             profile: filename,
           },
           (err) => {
@@ -91,6 +103,16 @@ router.post("/update_user/:id", upload.single("image"), async (req, res) => {
 
   if (!req.body.userLevel || req.body.userLevel === "") {
     return res.send({ error: "Please select user level" });
+  }
+
+  if (!req.body.activeList || req.body.activeList === "") {
+    return res.send({ error: "Please select active list type" });
+  }
+  if (!req.body.superActiveList || req.body.superActiveList === "") {
+    return res.send({ error: "Please select Super Active List Type" });
+  }
+  if (!req.body.underAdminMod || req.body.underAdminMod === "") {
+    return res.send({ error: "Please select User Under Admin/Moderator" });
   }
   if (!req.body.joinDate || req.body.joinDate === "") {
     return res.send({ error: "Please provide a join date" });
@@ -139,6 +161,9 @@ router.post("/update_user/:id", upload.single("image"), async (req, res) => {
                 admin_special_comment: req.body.adminSpecialComment,
                 moderator_special_comment: req.body.modSpecialComment,
                 user_level: req.body.userLevel,
+                active_list: req.body.activeList,
+                super_active_list: req.body.superActiveList,
+                under_admin_mod: req.body.underAdminMod,
                 profile: filename,
               },
               (err) => {

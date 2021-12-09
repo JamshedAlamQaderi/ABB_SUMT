@@ -40,6 +40,20 @@ class AdminRepository {
     });
   }
 
+  readAdminNames(onError, onSuccess) {
+    if (database === "undefined")
+      return onError("AdminRepository::readAdminNames-> Database not Found!");
+    let query = `select id, username from admin`;
+    database.query(query, (err, res, field) => {
+      if (err)
+        return onError(
+          "AdminRepository::readAdminNames-> reading all admin names causing error, " +
+            err.message
+        );
+      onSuccess(res);
+    });
+  }
+
   login({ username, password }, onError, onSuccess) {
     if (database === "undefined")
       return onError("AdminRepository::login-> Database not Found!");

@@ -5,14 +5,14 @@ const cors = require("cors");
 const apiRouter = require("./router/api");
 const app = express();
 
-app.use(cors({ origin: "http://localhost:4200", optionsSuccessStatus: 200 }));
+//app.use(cors({ origin: "http://localhost:4200", optionsSuccessStatus: 200 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(express.static("public/frontend"));
 app.use("/api", apiRouter);
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
+app.get("*", (req, res) => {
+  res.sendFile("index.html", { root: 'public/frontend' });
 });
 
 app.listen(process.env.SERVER_PORT, () => {

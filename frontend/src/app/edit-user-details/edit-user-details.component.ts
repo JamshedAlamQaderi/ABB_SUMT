@@ -4,6 +4,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 import { environment } from 'src/environments/environment';
 import { IEditUserDetailModel } from '../classes/edit-user-detail-model';
+import { AdminService } from '../services/admin.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -16,6 +17,10 @@ export class EditUserDetailsComponent implements OnInit {
   profileImage: ArrayBuffer | null | undefined | string = null;
   selectedProfileImage: any = null;
   userLevels: String[] = [];
+  activeList: String[] = ['No', 'Active List'];
+  superActiveList: String[] = ['No', 'Tier-1', 'Tier-2', 'Progress List'];
+  adminList: String[] = [];
+
   mode: string = 'new';
 
   constructor(
@@ -23,19 +28,23 @@ export class EditUserDetailsComponent implements OnInit {
     private notification: NotificationsService,
     private user: UserService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private admin: AdminService
   ) {}
 
   ngOnInit(): void {
     this.createUserLevels();
+    this.loadAdminNames();
     this.editUserDetailModel.selectedLevel = '';
+    this.editUserDetailModel.selectedActiveList = '';
+    this.editUserDetailModel.selectedSuperActiveList = '';
+    this.editUserDetailModel.selectedUnderAdminMod = '';
     this.route.paramMap.subscribe((params: ParamMap) => {
       let mode = params.get('mode');
       let userId = params.get('userId');
       if (mode == 'edit') {
         this.mode = 'edit';
         if (userId) {
-          console.log('userid: ' + userId);
           this.loadUserData(userId);
         } else {
           this.notification.error(
@@ -53,15 +62,7 @@ export class EditUserDetailsComponent implements OnInit {
 
   createUserLevels() {
     this.userLevels.push(
-      ...[
-        'level-1',
-        'level-2',
-        'level-3',
-        'level-4',
-        'level-5',
-        'active-list',
-        'superactive-list',
-      ]
+      ...['level-1', 'level-2', 'level-3', 'level-4', 'level-5']
     );
   }
 
@@ -103,6 +104,9 @@ export class EditUserDetailsComponent implements OnInit {
             adminSpecialComment: userData.admin_special_comment,
             moderatorSpecialComment: userData.moderator_special_comment,
             selectedLevel: userData.user_level,
+            selectedActiveList: userData.active_list,
+            selectedSuperActiveList: userData.super_active_list,
+            selectedUnderAdminMod: userData.under_admin_mod,
           };
         } else {
           this.notification.error(
@@ -115,6 +119,28 @@ export class EditUserDetailsComponent implements OnInit {
         this.notification.error(
           'Unknow Error',
           'Unknow error found! please contact with technician',
+          environment.noticationConfig
+        );
+      }
+    });
+  }
+
+  loadAdminNames() {
+    this.admin.getAllAdminNames().subscribe((res) => {
+      if (res.error) {
+        this.notification.error(
+          'Server Error',
+          res.error,
+          environment.noticationConfig
+        );
+      } else if (res.success) {
+        this.adminList.push(
+          ...res.success.map((obj: any) => obj.username + ' (' + obj.id + ')')
+        );
+      } else {
+        this.notification.error(
+          'Unknow Error',
+          'Unknow error found while loading all admin names! please contact with technician',
           environment.noticationConfig
         );
       }
@@ -158,8 +184,14 @@ export class EditUserDetailsComponent implements OnInit {
     if (
       this.editUserDetailModel.joinDate &&
       this.editUserDetailModel.selectedLevel &&
+      this.editUserDetailModel.selectedActiveList &&
+      this.editUserDetailModel.selectedSuperActiveList &&
+      this.editUserDetailModel.selectedUnderAdminMod &&
       this.editUserDetailModel.joinDate !== '' &&
-      this.editUserDetailModel.selectedLevel !== ''
+      this.editUserDetailModel.selectedLevel !== '' &&
+      this.editUserDetailModel.selectedActiveList !== '' &&
+      this.editUserDetailModel.selectedSuperActiveList !== '' &&
+      this.editUserDetailModel.selectedUnderAdminMod !== ''
     ) {
       let formData = new FormData();
       if (this.selectedProfileImage !== null) {
@@ -197,6 +229,18 @@ export class EditUserDetailsComponent implements OnInit {
       formData.append(
         'userLevel',
         this.editUserDetailModel.selectedLevel || ''
+      );
+      formData.append(
+        'activeList',
+        this.editUserDetailModel.selectedActiveList || ''
+      );
+      formData.append(
+        'superActiveList',
+        this.editUserDetailModel.selectedSuperActiveList || ''
+      );
+      formData.append(
+        'underAdminMod',
+        this.editUserDetailModel.selectedUnderAdminMod || ''
       );
 
       // update user if mode=edit
@@ -237,12 +281,12 @@ export class EditUserDetailsComponent implements OnInit {
         );
         this.editUserDetailModel = {};
         setTimeout(() => {
-          this.router.navigate(['/user-details']);
+          this.location.back();
         }, 2000);
       } else {
         this.notification.error(
           'Unknow Error',
-          'Unknow error found! please contact with technician',
+          'Unknow error found while creating new user! please contact with technician',
           environment.noticationConfig
         );
       }
@@ -269,10 +313,13 @@ export class EditUserDetailsComponent implements OnInit {
               res.success,
               environment.noticationConfig
             );
+            setTimeout(() => {
+              this.location.back();
+            }, 2000);
           } else {
             this.notification.error(
               'Unknow Error',
-              'Unknow error found! please contact with technician',
+              'Unknow error found while updating user data! please contact with technician',
               environment.noticationConfig
             );
           }

@@ -31,8 +31,8 @@
           <img
             class="w-36 h-36 rounded-full hover:shadow-2xl"
             [src]="profileImage"
-            alt="not found"
             (click)="profile_img_input.click()"
+            onerror="this.src='assets/select_user_profile_image.png'"
           />
         </div>
       </div>
@@ -88,9 +88,6 @@
           [(ngModel)]="editUserDetailModel.referrer"
         />
       </div>
-    </div>
-    <!-- section 2 -->
-    <div class="w-100 bg-white rounded-md shadow-lg p-4">
       <!-- steamit userid area -->
       <div class="w-full flex flex-col mt-4">
         <label
@@ -106,7 +103,9 @@
           [(ngModel)]="editUserDetailModel.steamitUserId"
         />
       </div>
-
+    </div>
+    <!-- section 2 -->
+    <div class="w-100 bg-white rounded-md shadow-lg p-4">
       <!-- Joining Date -->
       <div class="w-full flex flex-col mt-4">
         <label class="text-gray-600 font-sans text-lg font-bold" for="join_date"
@@ -169,6 +168,63 @@
           </option>
         </select>
       </div>
+      <!-- active list -->
+      <div class="w-full flex flex-col mt-4">
+        <label
+          class="text-gray-600 font-sans text-lg font-bold"
+          for="active_list"
+          >Select Active List Type</label
+        >
+        <select
+          [(ngModel)]="editUserDetailModel.selectedActiveList"
+          id="active_list"
+          name="active_list"
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-12 p-2"
+        >
+          <option value="" selected>Select Active List Type</option>
+          <option *ngFor="let type of activeList" [value]="type">
+            {{ type }}
+          </option>
+        </select>
+      </div>
+      <!-- super active list -->
+      <div class="w-full flex flex-col mt-4">
+        <label
+          class="text-gray-600 font-sans text-lg font-bold"
+          for="super_active_list"
+          >Select Super Active List Type</label
+        >
+        <select
+          [(ngModel)]="editUserDetailModel.selectedSuperActiveList"
+          id="super_active_list"
+          name="super_active_list"
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-12 p-2"
+        >
+          <option value="" selected>Select Super Active List Type</option>
+          <option *ngFor="let type of superActiveList" [value]="type">
+            {{ type }}
+          </option>
+        </select>
+      </div>
+      <!-- under admin/moderator -->
+      <div class="w-full flex flex-col mt-4">
+        <label
+          class="text-gray-600 font-sans text-lg font-bold"
+          for="under_admin_mod"
+          >Select User Under Admin/Moderator</label
+        >
+        <select
+          [(ngModel)]="editUserDetailModel.selectedUnderAdminMod"
+          id="under_admin_mod"
+          name="under_admin_mod"
+          class="border-2 border-green-700 mt-1 rounded-md shadow-lg h-12 p-2"
+        >
+          <option value="" selected>Select Under Admin/Moderator</option>
+          <option *ngFor="let admin_name of adminList" [value]="admin_name">
+            {{ admin_name }}
+          </option>
+        </select>
+      </div>
     </div>
     <!-- section 3 -->
     <div class="w-100 bg-white rounded-md shadow-lg p-4">
@@ -215,53 +271,42 @@
       </div>
     </div>
   </div>
-</div>
-<div
-  class="
-    absolute
-    bottom-0
-    right-0
-    w-full
-    bg-white
-    h-20
-    flex
-    justify-end
-    items-center
-    shadow-2xl
-  "
->
-  <button
-    (click)="onBackButtonClicked()"
-    class="
-      h-12
-      bg-gray-100
-      rounded-md
-      hover:bg-gray-300
-      m-1
-      uppercase
-      px-4
-      mr-4
-    "
+  <div
+    class="w-full bg-white h-20 flex justify-end items-center shadow-2xl mt-10"
   >
-    Go back
-  </button>
-  <button
-    (click)="onSaveButtonClicked()"
-    class="
-      m-1
-      px-4
-      h-12
-      w-32
-      mr-10
-      rounded-md
-      uppercase
-      text-white
-      bg-gradient-to-r
-      from-green-700
-      to-green-400
-      hover:from-green-800 hover:to-green-500
-    "
-  >
-    {{ mode == "edit" ? "Update" : "Save" }}
-  </button>
+    <button
+      (click)="onBackButtonClicked()"
+      class="
+        h-12
+        bg-gray-100
+        rounded-md
+        hover:bg-gray-300
+        m-1
+        uppercase
+        px-4
+        mr-4
+      "
+    >
+      Go back
+    </button>
+    <button
+      (click)="onSaveButtonClicked()"
+      class="
+        m-1
+        px-4
+        h-12
+        w-32
+        mr-10
+        rounded-md
+        uppercase
+        text-white
+        bg-gradient-to-r
+        from-green-700
+        to-green-400
+        hover:from-green-800 hover:to-green-500
+      "
+    >
+      {{ mode == "edit" ? "Update" : "Save" }}
+    </button>
+  </div>
 </div>

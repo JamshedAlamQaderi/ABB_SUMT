@@ -19,6 +19,23 @@ router.get("/myself", (req, res) => {
   );
 });
 
+router.get("/admin_names", (req, res) => {
+  if (!req.authenticated)
+    return res.send({
+      error: "You are not authenticated of userId=" + req.userId,
+    });
+  adminRepository.readAdminNames(
+    (msg) => {
+      res.send({ error: msg });
+    },
+    (successData) => {
+      res.send({
+        success: [...successData],
+      });
+    }
+  );
+});
+
 router.get("/all", (req, res) => {
   if (!req.authenticated)
     return res.send({

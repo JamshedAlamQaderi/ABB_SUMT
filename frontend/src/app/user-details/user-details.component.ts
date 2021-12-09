@@ -192,6 +192,15 @@ export class UserDetailsComponent implements OnInit {
       value: 'moderator_special_comment',
     });
     this.searchOptions.push({ text: 'User Level', value: 'user_level' });
+    this.searchOptions.push({ text: 'Active List', value: 'active_list' });
+    this.searchOptions.push({
+      text: 'Super Active List',
+      value: 'super_active_list',
+    });
+    this.searchOptions.push({
+      text: 'User Under Admin/Mod',
+      value: 'under_admin_mod',
+    });
   }
 
   onSearchEnterKeyPressed() {

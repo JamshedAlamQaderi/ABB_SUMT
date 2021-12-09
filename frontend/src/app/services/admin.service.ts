@@ -17,6 +17,7 @@ export class AdminService {
   allAdminDetailsUrl: string = this.baseUrl + '/all';
   adminDeleteUrl: string = this.baseUrl + '/delete';
   createAccountUrl: string = this.baseUrl + '/create';
+  allAdminNamesUrl: string = this.baseUrl + '/admin_names';
 
   constructor(private http: HttpClient) {}
 
@@ -33,6 +34,10 @@ export class AdminService {
 
   getAllAdminDetails() {
     return this.http.get<any>(this.allAdminDetailsUrl);
+  }
+
+  getAllAdminNames() {
+    return this.http.get<any>(this.allAdminNamesUrl);
   }
 
   deleteAdmin(adminId: string) {
