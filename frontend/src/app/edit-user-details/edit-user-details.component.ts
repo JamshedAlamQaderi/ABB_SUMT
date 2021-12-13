@@ -181,18 +181,7 @@ export class EditUserDetailsComponent implements OnInit {
       'Empty Field',
       'User Level must be selected'
     );
-    if (
-      this.editUserDetailModel.joinDate &&
-      this.editUserDetailModel.selectedLevel &&
-      this.editUserDetailModel.selectedActiveList &&
-      this.editUserDetailModel.selectedSuperActiveList &&
-      this.editUserDetailModel.selectedUnderAdminMod &&
-      this.editUserDetailModel.joinDate !== '' &&
-      this.editUserDetailModel.selectedLevel !== '' &&
-      this.editUserDetailModel.selectedActiveList !== '' &&
-      this.editUserDetailModel.selectedSuperActiveList !== '' &&
-      this.editUserDetailModel.selectedUnderAdminMod !== ''
-    ) {
+    if (true) {
       let formData = new FormData();
       if (this.selectedProfileImage !== null) {
         formData.append('image', this.selectedProfileImage);

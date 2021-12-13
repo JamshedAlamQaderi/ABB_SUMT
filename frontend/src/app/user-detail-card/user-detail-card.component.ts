@@ -20,6 +20,13 @@ export class UserDetailCardComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  onShowClicked() {
+    this.router.navigate([
+      '/show-user-details',
+      { userId: this.userDetailModel.userId },
+    ]);
+  }
+
   onEditClicked() {
     this.router.navigate([
       '/edit-user-details',

@@ -7,6 +7,7 @@ import { CreateAdminComponent } from './create-admin/create-admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditUserDetailsComponent } from './edit-user-details/edit-user-details.component';
 import { LoginComponent } from './login/login.component';
+import { ShowUserDetailsComponent } from './show-user-details/show-user-details.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 
 const routes: Routes = [
@@ -39,6 +40,11 @@ const routes: Routes = [
   {
     path: 'edit-user-details',
     component: EditUserDetailsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'show-user-details',
+    component: ShowUserDetailsComponent,
     canActivate: [AuthGuard],
   },
 ];

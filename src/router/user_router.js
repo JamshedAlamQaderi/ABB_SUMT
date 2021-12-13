@@ -12,40 +12,30 @@ router.post("/create_user", upload.single("image"), async (req, res) => {
       error: "You are not authenticated of userId=" + req.userId,
     });
 
-  if (!req.file) {
-    return res.send({ error: "Please provide an image" });
-  }
-  if (!req.body.userLevel || req.body.userLevel === "") {
-    return res.send({ error: "Please select user level" });
-  }
-  if (!req.body.activeList || req.body.activeList === "") {
-    return res.send({ error: "Please select active list type" });
-  }
-  if (!req.body.superActiveList || req.body.superActiveList === "") {
-    return res.send({ error: "Please select Super Active List Type" });
-  }
-  if (!req.body.underAdminMod || req.body.underAdminMod === "") {
-    return res.send({ error: "Please select User Under Admin/Moderator" });
-  }
-  if (!req.body.joinDate || req.body.joinDate === "") {
-    return res.send({ error: "Please provide a join date" });
-  }
-  if (
-    !!req.body.name &&
-    !!req.body.address &&
-    !!req.body.country &&
-    !!req.body.referrer &&
-    !!req.body.steamitId &&
-    !!req.body.introPostLink &&
-    !!req.body.impoPostLink &&
-    !!req.body.negComment &&
-    !!req.body.adminSpecialComment &&
-    !!req.body.modSpecialComment
-  ) {
+  req.body.userLevel = req.body.userLevel || "";
+  req.body.activeList = req.body.activeList || "";
+  req.body.superActiveList = req.body.superActiveList || "";
+  req.body.underAdminMod = req.body.underAdminMod || "";
+  req.body.joinDate = req.body.joinDate || "";
+  req.body.name = req.body.name || "";
+  req.body.address = req.body.address || "";
+  req.body.country = req.body.country || "";
+  req.body.referrer = req.body.referrer || "";
+  req.body.steamitId = req.body.steamitId || "";
+  req.body.introPostLink = req.body.introPostLink || "";
+  req.body.impoPostLink = req.body.impoPostLink || "";
+  req.body.negComment = req.body.negComment || "";
+  req.body.adminSpecialComment = req.body.adminSpecialComment || "";
+  req.body.modSpecialComment = req.body.modSpecialComment || "";
+  if (true) {
     try {
+      const filename = "";
       const fileUpload = new ResizeRepository();
-      const filename = await fileUpload.save(req.file.buffer);
-      if (filename !== "") {
+      if (req.file) {
+        filename = await fileUpload.save(req.file.buffer);
+      }
+      // if (filename !== "") {
+      if (true) {
         userRepository.insert(
           {
             name: req.body.name,
@@ -66,7 +56,9 @@ router.post("/create_user", upload.single("image"), async (req, res) => {
             profile: filename,
           },
           (err) => {
-            fileUpload.deleteFile(filename);
+            if (filename !== "") {
+              fileUpload.deleteFile(filename);
+            }
             return res.send({ error: err });
           },
           (successData) => {
@@ -97,38 +89,23 @@ router.post("/update_user/:id", upload.single("image"), async (req, res) => {
       error: "You are not authenticated of userId=" + req.userId,
     });
 
-  // if (!req.file) {
-  //   return res.send({ error: "Please provide an image" });
-  // }
+  req.body.userLevel = req.body.userLevel || "";
+  req.body.activeList = req.body.activeList || "";
+  req.body.superActiveList = req.body.superActiveList || "";
+  req.body.underAdminMod = req.body.underAdminMod || "";
+  req.body.joinDate = req.body.joinDate || "";
+  req.body.name = req.body.name || "";
+  req.body.address = req.body.address || "";
+  req.body.country = req.body.country || "";
+  req.body.referrer = req.body.referrer || "";
+  req.body.steamitId = req.body.steamitId || "";
+  req.body.introPostLink = req.body.introPostLink || "";
+  req.body.impoPostLink = req.body.impoPostLink || "";
+  req.body.negComment = req.body.negComment || "";
+  req.body.adminSpecialComment = req.body.adminSpecialComment || "";
+  req.body.modSpecialComment = req.body.modSpecialComment || "";
 
-  if (!req.body.userLevel || req.body.userLevel === "") {
-    return res.send({ error: "Please select user level" });
-  }
-
-  if (!req.body.activeList || req.body.activeList === "") {
-    return res.send({ error: "Please select active list type" });
-  }
-  if (!req.body.superActiveList || req.body.superActiveList === "") {
-    return res.send({ error: "Please select Super Active List Type" });
-  }
-  if (!req.body.underAdminMod || req.body.underAdminMod === "") {
-    return res.send({ error: "Please select User Under Admin/Moderator" });
-  }
-  if (!req.body.joinDate || req.body.joinDate === "") {
-    return res.send({ error: "Please provide a join date" });
-  }
-  if (
-    !!req.body.name &&
-    !!req.body.address &&
-    !!req.body.country &&
-    !!req.body.referrer &&
-    !!req.body.steamitId &&
-    !!req.body.introPostLink &&
-    !!req.body.impoPostLink &&
-    !!req.body.negComment &&
-    !!req.body.adminSpecialComment &&
-    !!req.body.modSpecialComment
-  ) {
+  if (true) {
     try {
       let userId = req.params.id;
       userRepository.readById(

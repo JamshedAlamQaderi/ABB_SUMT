@@ -142,7 +142,13 @@ export class UserDetailsComponent implements OnInit {
         for (let item of res.success) {
           let date = new Date(item.join_date);
           let joinDate =
-            date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
+            (date.getDate() < 10 ? '0' : '') +
+            date.getDate() +
+            '/' +
+            (date.getMonth() < 10 ? '0' : '') +
+            date.getMonth() +
+            '/' +
+            date.getFullYear();
           this.userDetailCardModels.push({
             userId: item.id,
             name: item.name,

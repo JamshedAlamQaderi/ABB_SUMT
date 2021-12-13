@@ -1,0 +1,210 @@
+<app-header></app-header>
+<div class="bg-gray-100 h-screen p-10">
+  <div class="flex justify-center uppercase font-bold text-4xl">
+    show User Details
+  </div>
+  <div class="w-full flex flex-row flex-wrap gap-10 mt-10">
+    <!-- section 1 -->
+    <div class="w-100 bg-white rounded-md shadow-lg p-4">
+      <!-- profile picture area -->
+      <div class="w-full flex justify-center">
+        <div
+          class="
+            w-40
+            h-40
+            bg-green-400
+            rounded-full
+            shadow-lg
+            flex
+            justify-center
+            items-center
+          "
+        >
+          <img
+            class="w-36 h-36 rounded-full hover:shadow-2xl"
+            [src]="profileImageUrl"
+            onerror="this.src='assets/select_user_profile_image.png'"
+          />
+        </div>
+      </div>
+      <!-- name area -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold">Name</label>
+        <p class="border-2 border-green-700 mt-1 rounded-md shadow-lg p-2">
+          {{ editUserDetailModel.name }}
+        </p>
+      </div>
+      <!-- address area -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold">Address</label>
+        <p class="border-2 border-green-700 mt-1 rounded-md shadow-lg p-2">
+          {{ editUserDetailModel.address }}
+        </p>
+      </div>
+      <!-- Country -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold">Country</label>
+        <p class="border-2 border-green-700 mt-1 rounded-md shadow-lg p-2">
+          {{ editUserDetailModel.country }}
+        </p>
+      </div>
+      <!-- referrer area -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold"
+          >Referrer</label
+        >
+        <p class="border-2 border-green-700 mt-1 rounded-md shadow-lg p-2">
+          {{ editUserDetailModel.referrer }}
+        </p>
+      </div>
+      <!-- steamit userid area -->
+      <div class="w-full flex flex-col mt-4">
+        <label
+          class="text-gray-600 font-sans text-lg font-bold"
+          for="steamit_userid"
+          >Steemit UserId</label
+        >
+        <p class="border-2 border-green-700 mt-1 rounded-md shadow-lg p-2">
+          {{ editUserDetailModel.steamitUserId }}
+        </p>
+      </div>
+    </div>
+    <!-- section 2 -->
+    <div class="w-100 bg-white rounded-md shadow-lg p-4">
+      <!-- Joining Date -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold"
+          >Join Date</label
+        >
+        <p class="border-2 border-green-700 mt-1 rounded-md shadow-lg p-2">
+          {{ editUserDetailModel.joinDate }}
+        </p>
+      </div>
+      <!-- intorduction post link -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold"
+          >Introduction Post Link</label
+        >
+        <p class="border-2 border-green-700 mt-1 rounded-md shadow-lg p-2">
+          {{ editUserDetailModel.introPostLink }}
+        </p>
+      </div>
+
+      <!-- important post link -->
+      <div class="w-full flex flex-col mt-4">
+        <label
+          class="text-gray-600 font-sans text-lg font-bold"
+          for="impo_post_link"
+          >Important Post Link</label
+        >
+        <p class="border-2 border-green-700 mt-1 rounded-md shadow-lg p-2">
+          {{ editUserDetailModel.impoPostLink }}
+        </p>
+      </div>
+      <!-- User Level link -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold"
+          >User Level</label
+        >
+        <p class="border-2 border-green-700 mt-1 rounded-md shadow-lg p-2">
+          {{ editUserDetailModel.selectedLevel }}
+        </p>
+      </div>
+      <!-- active list -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold"
+          >Active List Type</label
+        >
+        <p class="border-2 border-green-700 mt-1 rounded-md shadow-lg p-2">
+          {{ editUserDetailModel.selectedActiveList }}
+        </p>
+      </div>
+      <!-- super active list -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold"
+          >Super Active List Type</label
+        >
+        <p class="border-2 border-green-700 mt-1 rounded-md shadow-lg p-2">
+          {{ editUserDetailModel.selectedSuperActiveList }}
+        </p>
+      </div>
+      <!-- under admin/moderator -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold"
+          >User Under Admin/Moderator</label
+        >
+        <p class="border-2 border-green-700 mt-1 rounded-md shadow-lg p-2">
+          {{ editUserDetailModel.selectedUnderAdminMod }}
+        </p>
+      </div>
+    </div>
+    <!-- section 3 -->
+    <div class="w-100 bg-white rounded-md shadow-lg p-4">
+      <!-- negative comments area -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold"
+          >Spamming/Abuse/Warning Comment</label
+        >
+        <p class="border-2 border-green-700 mt-1 rounded-md shadow-lg p-2">
+          {{ editUserDetailModel.negativeComment }}
+        </p>
+      </div>
+      <!-- Admin Special Comment area -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold"
+          >Admin Special Comment</label
+        >
+        <p class="border-2 border-green-700 mt-1 rounded-md shadow-lg p-2">
+          {{ editUserDetailModel.adminSpecialComment }}
+        </p>
+      </div>
+      <!-- Moderator Special Comment -->
+      <div class="w-full flex flex-col mt-4">
+        <label class="text-gray-600 font-sans text-lg font-bold"
+          >Moderator Special Comment</label
+        >
+        <p class="border-2 border-green-700 mt-1 rounded-md shadow-lg p-2">
+          {{ editUserDetailModel.moderatorSpecialComment }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    class="w-full bg-white h-20 flex justify-end items-center shadow-2xl mt-10"
+  >
+    <button
+      (click)="onBackClicked()"
+      class="
+        h-12
+        bg-gray-100
+        rounded-md
+        hover:bg-gray-300
+        m-1
+        uppercase
+        px-4
+        mr-4
+      "
+    >
+      Go back
+    </button>
+    <button
+      (click)="onEditClicked()"
+      class="
+        m-1
+        px-4
+        h-12
+        w-32
+        mr-10
+        rounded-md
+        uppercase
+        text-white
+        bg-gradient-to-r
+        from-green-700
+        to-green-400
+        hover:from-green-800 hover:to-green-500
+      "
+    >
+      EDIT
+    </button>
+  </div>
+</div>

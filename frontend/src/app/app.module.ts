@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { ShowUserDetailsComponent } from './show-user-details/show-user-details.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     UserDetailCardComponent,
     EditUserDetailsComponent,
     CreateAdminComponent,
+    ShowUserDetailsComponent,
   ],
   imports: [
     BrowserModule,
